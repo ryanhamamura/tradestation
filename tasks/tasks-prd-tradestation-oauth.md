@@ -59,9 +59,9 @@
   - [x] 3.6 Write specs for TokenResponse and token refresh logic in spec/tradestation/token_response_spec.rb
 
 - [ ] 4. Add API request capabilities
-  - [ ] 4.1 Implement authenticated_request method in client.rb that accepts token and makes API calls
-  - [ ] 4.2 Add convenience methods for common endpoints (get_accounts, get_user_info) that accept tokens
-  - [ ] 4.3 Implement automatic retry logic for failed requests (with exponential backoff)
+  - [x] 4.1 Implement authenticated_request method in client.rb that accepts token and makes API calls
+  - [x] 4.2 Add convenience methods for common endpoints (get_accounts, get_user_info) that accept tokens
+  - [x] 4.3 Implement automatic retry logic for failed requests (with exponential backoff)
   - [ ] 4.4 Add request/response logging capability (optional, configurable)
   - [ ] 4.5 Write specs for API request methods with mocked responses
 

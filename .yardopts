@@ -1,0 +1,10 @@
+--markup markdown
+--title "TradeStation Ruby SDK"
+--charset utf-8
+--no-private
+--embed-mixins
+--output-dir ./doc
+--readme README.md
+-
+CHANGELOG.md
+LICENSE.txt
