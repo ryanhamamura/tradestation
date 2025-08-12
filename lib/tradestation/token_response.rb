@@ -16,9 +16,10 @@ module Tradestation
         @refresh_token = oauth_token.refresh_token
         @expires_in = oauth_token.expires_in
         @expires_at = oauth_token.expires_at ? Time.at(oauth_token.expires_at) : nil
-        @token_type = oauth_token.params["token_type"] || "Bearer"
-        @scope = parse_scope(oauth_token.params["scope"])
-        @id_token = oauth_token.params["id_token"]
+        # OAuth2::AccessToken stores additional data in the params hash
+        @token_type = oauth_token.params[:token_type] || oauth_token.params["token_type"] || "Bearer"
+        @scope = parse_scope(oauth_token.params[:scope] || oauth_token.params["scope"])
+        @id_token = oauth_token.params[:id_token] || oauth_token.params["id_token"]
       elsif oauth_token.is_a?(Hash)
         @access_token = oauth_token["access_token"] || oauth_token[:access_token]
         @refresh_token = oauth_token["refresh_token"] || oauth_token[:refresh_token]

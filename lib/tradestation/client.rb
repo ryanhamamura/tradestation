@@ -82,6 +82,40 @@ module Tradestation
       handle_oauth_error(e)
     end
 
+    def token_expired?(expires_at)
+      return false if expires_at.nil?
+
+      expires_at_time = case expires_at
+                        when Time
+                          expires_at
+                        when Integer, Float
+                          Time.at(expires_at)
+                        when String
+                          Time.parse(expires_at)
+                        else
+                          raise ArgumentError, "expires_at must be a Time, Integer (Unix timestamp), or String"
+                        end
+
+      Time.now >= expires_at_time
+    end
+
+    def token_expires_soon?(expires_at, buffer_seconds = 300)
+      return false if expires_at.nil?
+
+      expires_at_time = case expires_at
+                        when Time
+                          expires_at
+                        when Integer, Float
+                          Time.at(expires_at)
+                        when String
+                          Time.parse(expires_at)
+                        else
+                          raise ArgumentError, "expires_at must be a Time, Integer (Unix timestamp), or String"
+                        end
+
+      Time.now >= (expires_at_time - buffer_seconds)
+    end
+
     private
 
     def oauth_client

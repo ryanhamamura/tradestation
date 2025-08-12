@@ -323,4 +323,90 @@ RSpec.describe Tradestation::Client do
       end
     end
   end
+
+  describe "#token_expired?" do
+    context "with Time object" do
+      it "returns true when token is expired" do
+        past_time = Time.now - 3600
+        expect(client.token_expired?(past_time)).to be true
+      end
+
+      it "returns false when token is not expired" do
+        future_time = Time.now + 3600
+        expect(client.token_expired?(future_time)).to be false
+      end
+    end
+
+    context "with Unix timestamp" do
+      it "returns true when token is expired" do
+        past_timestamp = (Time.now - 3600).to_i
+        expect(client.token_expired?(past_timestamp)).to be true
+      end
+
+      it "returns false when token is not expired" do
+        future_timestamp = (Time.now + 3600).to_i
+        expect(client.token_expired?(future_timestamp)).to be false
+      end
+    end
+
+    context "with String timestamp" do
+      it "returns true when token is expired" do
+        past_time_string = (Time.now - 3600).iso8601
+        expect(client.token_expired?(past_time_string)).to be true
+      end
+
+      it "returns false when token is not expired" do
+        future_time_string = (Time.now + 3600).iso8601
+        expect(client.token_expired?(future_time_string)).to be false
+      end
+    end
+
+    context "with nil" do
+      it "returns false" do
+        expect(client.token_expired?(nil)).to be false
+      end
+    end
+
+    context "with invalid type" do
+      it "raises ArgumentError" do
+        expect { client.token_expired?([]) }.to raise_error(
+          ArgumentError,
+          "expires_at must be a Time, Integer (Unix timestamp), or String"
+        )
+      end
+    end
+  end
+
+  describe "#token_expires_soon?" do
+    context "with default buffer (5 minutes)" do
+      it "returns true when token expires within buffer" do
+        expires_in_2_minutes = Time.now + 120
+        expect(client.token_expires_soon?(expires_in_2_minutes)).to be true
+      end
+
+      it "returns false when token expires after buffer" do
+        expires_in_10_minutes = Time.now + 600
+        expect(client.token_expires_soon?(expires_in_10_minutes)).to be false
+      end
+
+      it "returns true when token is already expired" do
+        past_time = Time.now - 3600
+        expect(client.token_expires_soon?(past_time)).to be true
+      end
+    end
+
+    context "with custom buffer" do
+      it "uses the provided buffer seconds" do
+        expires_in_1_hour = Time.now + 3600
+        expect(client.token_expires_soon?(expires_in_1_hour, 3700)).to be true
+        expect(client.token_expires_soon?(expires_in_1_hour, 3500)).to be false
+      end
+    end
+
+    context "with nil" do
+      it "returns false" do
+        expect(client.token_expires_soon?(nil)).to be false
+      end
+    end
+  end
 end

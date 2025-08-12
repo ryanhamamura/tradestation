@@ -55,8 +55,8 @@
   - [x] 3.2 Add helper methods to TokenResponse: expired?, expires_in, time_until_expiry, and to_h for serialization
   - [x] 3.3 Implement refresh_token method in client.rb that accepts refresh token and returns new TokenResponse
   - [x] 3.4 Add JWT parsing for id_token to extract user claims and profile information
-  - [ ] 3.5 Create token_expired? helper method in client that accepts expires_at timestamp
-  - [ ] 3.6 Write specs for TokenResponse and token refresh logic in spec/tradestation/token_response_spec.rb
+  - [x] 3.5 Create token_expired? helper method in client that accepts expires_at timestamp
+  - [x] 3.6 Write specs for TokenResponse and token refresh logic in spec/tradestation/token_response_spec.rb
 
 - [ ] 4. Add API request capabilities
   - [ ] 4.1 Implement authenticated_request method in client.rb that accepts token and makes API calls
