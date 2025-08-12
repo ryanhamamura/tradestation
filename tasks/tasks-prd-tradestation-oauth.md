@@ -41,20 +41,20 @@
   - [x] 1.5 Update lib/tradestation.rb to require all new files and set up module structure
   - [x] 1.6 Write specs for configuration module in spec/tradestation/configuration_spec.rb
 
-- [ ] 2. Implement stateless OAuth2 client with authorization flow
-  - [ ] 2.1 Create lib/tradestation/client.rb as main public interface accepting configuration on initialization
-  - [ ] 2.2 Create lib/tradestation/oauth2_client.rb as internal wrapper around oauth2 gem with TradeStation endpoints
-  - [ ] 2.3 Implement authorization_url method that generates OAuth URL with state, scope, audience, and redirect_uri
-  - [ ] 2.4 Create exchange_code method that trades authorization code for tokens and returns TokenResponse object
-  - [ ] 2.5 Implement proper error handling wrapping OAuth2::Error into custom Tradestation exceptions
-  - [ ] 2.6 Add support for PKCE flow with code_challenge and code_verifier parameters
-  - [ ] 2.7 Write comprehensive specs in spec/tradestation/client_spec.rb with mocked OAuth2 responses
+- [x] 2. Implement stateless OAuth2 client with authorization flow
+  - [x] 2.1 Create lib/tradestation/client.rb as main public interface accepting configuration on initialization
+  - [x] 2.2 Create lib/tradestation/oauth2_client.rb as internal wrapper around oauth2 gem with TradeStation endpoints
+  - [x] 2.3 Implement authorization_url method that generates OAuth URL with state, scope, audience, and redirect_uri
+  - [x] 2.4 Create exchange_code method that trades authorization code for tokens and returns TokenResponse object
+  - [x] 2.5 Implement proper error handling wrapping OAuth2::Error into custom Tradestation exceptions
+  - [x] 2.6 Add support for PKCE flow with code_challenge and code_verifier parameters
+  - [x] 2.7 Write comprehensive specs in spec/tradestation/client_spec.rb with mocked OAuth2 responses
 
-- [ ] 3. Build token handling and refresh methods
-  - [ ] 3.1 Create lib/tradestation/token_response.rb value object to encapsulate access_token, refresh_token, expires_at, and id_token
-  - [ ] 3.2 Add helper methods to TokenResponse: expired?, expires_in, time_until_expiry, and to_h for serialization
-  - [ ] 3.3 Implement refresh_token method in client.rb that accepts refresh token and returns new TokenResponse
-  - [ ] 3.4 Add JWT parsing for id_token to extract user claims and profile information
+- [x] 3. Build token handling and refresh methods
+  - [x] 3.1 Create lib/tradestation/token_response.rb value object to encapsulate access_token, refresh_token, expires_at, and id_token
+  - [x] 3.2 Add helper methods to TokenResponse: expired?, expires_in, time_until_expiry, and to_h for serialization
+  - [x] 3.3 Implement refresh_token method in client.rb that accepts refresh token and returns new TokenResponse
+  - [x] 3.4 Add JWT parsing for id_token to extract user claims and profile information
   - [ ] 3.5 Create token_expired? helper method in client that accepts expires_at timestamp
   - [ ] 3.6 Write specs for TokenResponse and token refresh logic in spec/tradestation/token_response_spec.rb
 
