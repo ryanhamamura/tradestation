@@ -5,7 +5,11 @@ RSpec.describe Tradestation do
     expect(Tradestation::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "can be configured" do
+    expect do
+      described_class.configure do |config|
+        config.client_id = "test"
+      end
+    end.not_to raise_error
   end
 end
