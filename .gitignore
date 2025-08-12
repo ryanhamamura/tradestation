@@ -7,6 +7,7 @@
 /spec/reports/
 /tmp/
 /tasks/
+/docs/openapi.json
 
 # rspec failure tracking
 .rspec_status
