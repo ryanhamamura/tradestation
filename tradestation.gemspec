@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Ryan Hamamura"]
   spec.email = ["58859899+ryanhamamura@users.noreply.github.com"]
 
-  spec.summary = "A Ruby gem for TradeStation integration"
-  spec.description = "A Ruby gem for TradeStation integration"
+  spec.summary = "Ruby client for TradeStation API OAuth authentication and trading"
+  spec.description = "A Ruby gem that provides OAuth 2.0 authentication and API client functionality for TradeStation's trading platform. Supports both production and sandbox environments."
   spec.homepage = "https://github.com/ryanhamamura/tradestation"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
